@@ -6,6 +6,8 @@ function SignUp({ setUser }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [profilePic, setProfilePic] = useState("");
 
+  console.log(profilePic);
+
   function handleSignUp(e) {
     e.preventDefault();
     fetch("/signup", {
@@ -28,37 +30,50 @@ function SignUp({ setUser }) {
 
   return (
     <div>
-      <form onSubmit={handleSignUp}>
+      <form className="submit" onSubmit={handleSignUp}>
         <h1>Sign Up</h1>
+        <br />
         <label>Username</label>
+        {/* <br /> */}
         <input
           type="text"
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <br />
         <label>Password</label>
+        {/* <br /> */}
         <input
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <br />
         <label>Password Confirmation</label>
+        {/* <br /> */}
         <input
           type="password"
           id="password_confirmation"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
+        <br />
         <label>Profile Pic</label>
+        {/* <br /> */}
+
         <input
-          type="image"
+          type="text"
           id="img_url"
           value={profilePic}
+          placeholder="paste image url..."
           onChange={(e) => setProfilePic(e.target.value)}
         />
-        <button type="submit">Sign Up</button>
+        <br />
+        <button className="sub-button" type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );

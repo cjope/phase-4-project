@@ -22,10 +22,7 @@ function NavBar({ user, setUser }) {
         <div>
           {user ? (
             <div className="user">
-              <img
-                src="https://static.wikia.nocookie.net/spaceballs/images/3/30/Skroob.jpg"
-                style={{ width: "50px", borderRadius: "50%" }}
-              ></img>
+              <img className="profile-pic" src={user.img_url}></img>
               <p>Welcome, {user.username}!</p>
               <button onClick={handleLogout}>Logout</button>
               <Link to="/cart">🛒</Link>
@@ -34,7 +31,6 @@ function NavBar({ user, setUser }) {
             <>
               <Link to="/signup">Signup</Link>
               <Link to="/login">Login</Link>
-              <Link to="/cart">Cart</Link>
             </>
           )}
         </div>
