@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
     def show
-        render json: Item.all
-    end
-
+        user = User.find_by(id: session[:user_id])
+        render json: user.items
+      end
+      
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users_items
   resources :items
   resources :users
 
@@ -8,7 +9,14 @@ Rails.application.routes.draw do
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+  get "/customers", to: "users#index"
 
+  get "/cart", to: "items#show"
+
+  get "/total", to: "users#total"
+
+  # get "/cart", to: "usersitem#show"
+  # get "/carts", to: "usersitem#index"
   
 
   # Routing logic: fallback requests for React Router.

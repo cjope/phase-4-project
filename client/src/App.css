@@ -113,3 +113,12 @@ button:hover {
   flex-wrap: nowrap;
   justify-content: right;
 }
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: right;
+  margin-inline: 10%;
+  border: solid black;
+}

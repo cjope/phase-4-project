@@ -4,7 +4,7 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Home from "./Home";
-// import Cart from "./Cart";
+import Cart from "./Cart";
 import "../App.css";
 
 function App() {
@@ -26,6 +26,9 @@ function App() {
           <Switch>
             <Route path="/">
               <Home />
+            </Route>
+            <Route exact path="/cart">
+              <Cart user={user} />
             </Route>
           </Switch>
         ) : (
