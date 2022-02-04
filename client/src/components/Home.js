@@ -5,9 +5,7 @@ import Footer from "./Footer";
 function Home() {
   return (
     <>
-      <Menu />
       <About></About>
-      <Footer></Footer>
     </>
   );
 }

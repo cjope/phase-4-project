@@ -8,6 +8,8 @@ function Menu() {
       <div className="m-left">
         <>
           <Link to="/cart">Cart</Link>
+          <Link to="/bonsais">Bonsais</Link>
+          <Link to="/supplies">Supplies</Link>
         </>
       </div>
       <div className="m-right">
