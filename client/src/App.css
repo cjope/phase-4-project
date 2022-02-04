@@ -131,7 +131,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-inline: 30%;
+  width: 70%;
+  /* margin-inline: 30%; */
 }
 
 .product img {
@@ -142,4 +143,17 @@ button:hover {
   background-color: coral;
   padding: 4%;
   border-radius: 20px;
+}
+
+.supplies {
+  display: flex;
+  /* flex-direction: column; */
+  /* background-color: coral; */
+}
+
+.cart-side {
+  width: 30%;
+}
+.supply-side {
+  width: 70%;
 }

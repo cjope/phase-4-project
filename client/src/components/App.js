@@ -5,7 +5,7 @@ import Login from "./Login";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import Cart from "./Cart";
-import Menu from "./Menu";
+// import Menu from "./Menu";
 import "../App.css";
 import Supplies from "./Supplies";
 import Bonsais from "./Bonsais";
@@ -39,6 +39,9 @@ function App() {
         </Route>
         <Route path="/bonsais">
           <Bonsais user={user} />
+        </Route>
+        <Route path="/cart">
+          <Cart user={user} />
         </Route>
         <Route path="/">
           <Home />

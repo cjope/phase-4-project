@@ -9,13 +9,20 @@ function Bonsais() {
       .then((item) => setPlants(item));
   }, []);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    //fetch update cart
+  }
+
   const listPlants = plants.map((plant) => (
     <div className="product" key={plant.id}>
       <img src={plant.img_url} alt="profile-pic"></img>
-      <h1>
-        {plant.name} - ${plant.price}
-      </h1>
-      <button>Add to Cart</button>
+      <h2>{plant.name}</h2>
+      <h2>${plant.price}</h2>
+      <button className="add-cart" value={plant.id}>
+        Add to Cart
+      </button>
     </div>
   ));
 

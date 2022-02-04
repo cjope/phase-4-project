@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get "/supplies", to: "items#supplies"
   get "/plants", to: "items#plants"
 
+
+  post "/checkout", to: "users_items#create"
+
   # get "/cart", to: "usersitem#show"
   # get "/carts", to: "usersitem#index"
   
