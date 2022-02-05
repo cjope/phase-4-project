@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Cart from "./Cart";
 
-function Supplies() {
+function Supplies({ user }) {
   const [supplies, setSupplies] = useState([]);
+  const [item, setItem] = useState(null);
 
   useEffect(() => {
     fetch("/supplies")
@@ -12,8 +12,17 @@ function Supplies() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target.value);
-    fetch("/checkout");
+    setItem(e.target.value);
+    fetch("/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        item_id: item,
+        user_id: user.id,
+      }),
+    });
     //fetch update cart
   }
 

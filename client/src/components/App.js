@@ -11,7 +11,7 @@ import Supplies from "./Supplies";
 import Bonsais from "./Bonsais";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -20,6 +20,8 @@ function App() {
       }
     });
   }, []);
+
+  console.log(user);
 
   return (
     <>
