@@ -10,7 +10,6 @@ function NavBar({ user, setUser }) {
       <>
         <Link to="/" />;
       </>;
-      // doesn't work - useHistory doesn't work but should be the solution for this - worked with Horror Review App??
     });
   }
 
@@ -18,12 +17,6 @@ function NavBar({ user, setUser }) {
     <>
       <header className="header">
         <div className="h-mid">
-          {/* <img
-          className="logo"
-          src="https://riverbendgardens.com/wp-content/uploads/2020/01/logo.png"
-          alt="logo"
-          // onClick={}
-        ></img> */}
           <Link to="/">
             <img
               src="https://riverbendgardens.com/wp-content/uploads/2020/01/logo.png"

@@ -11,48 +11,32 @@ function Cart({ user }) {
       .then((cart) => setUsersItems(cart));
   }, [{ usersItems }]);
 
-  // const listUserItems = user?.items.map((item) => (
-  //   <div className="cart-items" key={item.id}>
-  //     <div className="cart-img-div">
-  //       <img className="cart-img" src={item.img_url} alt="profile-pic"></img>
-  //     </div>
-  //     <div className="cart-item">
-  //       <h1>{item.name}</h1>
-  //       <h1>${item.price}</h1>
-  //     </div>
-  //     <button onClick={(e) => console.log(item.id)}>X</button>
-  //   </div>
-  // ));
-
   function handleDelete(e) {
     e.preventDefault();
     fetch(`/remove/${e.target.value}`, { method: "DELETE" });
   }
 
-  const listUserItems = user?.items?.map((item) => (
+  // console.log(usersItems);
+
+  const listUserItems = usersItems?.map((item) => (
     <div className="cart-items" key={item.id}>
       <div className="cart-img-div">
-        <img className="cart-img" src={item.img_url} alt="profile-pic"></img>
+        <img
+          className="cart-img"
+          src={item.item.img_url}
+          alt="profile-pic"
+        ></img>
       </div>
+      <h1>{item.id}</h1>
       <div className="cart-item">
-        <h1>{item.name}</h1>
-        <h1>${item.price}</h1>
+        <h1>{item.item.name}</h1>
+        <h1>${item.item.price}</h1>
       </div>
       <button value={item.id} onClick={handleDelete}>
         X
       </button>
     </div>
   ));
-
-  console.log(usersItems);
-
-  // let sum = user?.items?.reduce(function (prev, current) {
-  //   return prev + +current.price;
-  // }, 0);
-
-  // console.log(sum?.toLocaleString());
-
-  // console.log(total);
 
   useState(() => {
     fetch("/total")
