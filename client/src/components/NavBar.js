@@ -8,7 +8,7 @@ function NavBar({ user, setUser }) {
         setUser(null);
       }
       <>
-        <Link to="/Home" />;
+        <Link to="/" />;
       </>;
       // doesn't work - useHistory doesn't work but should be the solution for this - worked with Horror Review App??
     });

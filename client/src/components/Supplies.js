@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function Supplies({ user }) {
   const [supplies, setSupplies] = useState([]);
-  const [item, setItem] = useState(null);
+  const [product, setProduct] = useState();
 
   useEffect(() => {
     fetch("/supplies")
@@ -12,26 +12,34 @@ function Supplies({ user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setItem(e.target.value);
+    setProduct(e.target.value);
+    handleSubmit2();
+  }
+
+  function handleSubmit2() {
     fetch("/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        item_id: item,
-        user_id: user.id,
+        item_id: product,
       }),
     });
-    //fetch update cart
   }
+
+  console.log(product);
 
   const listSupplies = supplies.map((item) => (
     <div className="product" key={item.id}>
       <img src={item.img_url} alt="profile-pic"></img>
       <h1>{item.name}</h1>
       <h1>${item.price}</h1>
-      <button className="add-cart" value={item.id} onClick={handleSubmit}>
+      <button
+        className="add-cart"
+        value={item.id}
+        onClick={(e) => handleSubmit(e)}
+      >
         Add to Cart
       </button>
     </div>

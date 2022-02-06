@@ -15,8 +15,8 @@ function Bonsais() {
     //fetch update cart
   }
 
-  const listPlants = plants.map((plant) => (
-    <div className="product" key={plant.id}>
+  const listPlants = plants?.map((plant) => (
+    <div className="product" key={plant?.id}>
       <img src={plant.img_url} alt="profile-pic"></img>
       <h2>{plant.name}</h2>
       <h2>${plant.price}</h2>
@@ -26,6 +26,6 @@ function Bonsais() {
     </div>
   ));
 
-  return <div>{listPlants}</div>;
+  return <div>{plants ? <div>{listPlants}</div> : <></>}</div>;
 }
 export default Bonsais;

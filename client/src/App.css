@@ -1,6 +1,7 @@
 body {
   margin-top: 2%;
   margin-inline: 15%;
+  justify-content: center;
 }
 
 .header {
@@ -114,15 +115,6 @@ button:hover {
   justify-content: right;
 }
 
-.cart-items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: right;
-  margin-inline: 10%;
-  border: solid black;
-}
-
 .product {
   justify-content: center;
   margin-top: 2%;
@@ -156,4 +148,31 @@ button:hover {
 }
 .supply-side {
   width: 70%;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  margin-inline: 30%;
+  border: solid black;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.huh {
+  display: flex;
+}
+
+.cart-img-div {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-img {
+  width: 300px;
 }

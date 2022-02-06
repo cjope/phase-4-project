@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   get "/customers", to: "users#index"
 
-  get "/cart", to: "items#show"
+  get "/cart", to: "users_items#show"
 
-  get "/total", to: "users#total"
+  get "/total", to: "users_items#total"
 
   get "/supplies", to: "items#supplies"
   get "/plants", to: "items#plants"

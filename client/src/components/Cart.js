@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Cart({ user }) {
   const [usersItems, setUsersItems] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  const listUserItems = user.items?.map((item) => (
-    <div
-      // className="cart-items"
-      key={item.id}
-    >
-      <img className="profile-pic" src={item.img_url} alt="profile-pic"></img>
-      <h1>
-        {item.name} - ${item.price}
-      </h1>
+  const listUserItems = user?.items?.map((item) => (
+    <div className="cart-items" key={item.id}>
+      <div className="cart-img-div">
+        <img className="cart-img" src={item.img_url} alt="profile-pic"></img>
+      </div>
+      <div className="cart-item">
+        <h1>{item.name}</h1>
+        <h1>${item.price}</h1>
+      </div>
     </div>
   ));
 
@@ -19,24 +21,41 @@ function Cart({ user }) {
     fetch("/cart")
       .then((r) => r.json())
       .then((cart) => setUsersItems(cart));
-  }, []);
+  }, [{ usersItems }]);
 
-  console.log(user?.items);
-  console.log(usersItems);
+  // let sum = user?.items?.reduce(function (prev, current) {
+  //   return prev + +current.price;
+  // }, 0);
 
-  console.log(listUserItems?.length == usersItems?.length);
+  // console.log(sum?.toLocaleString());
 
-  let sum = user.items?.reduce(function (prev, current) {
-    return prev + +current.price.toFixed(2);
-  }, 0);
+  console.log(total);
+
+  useState(() => {
+    fetch("/total")
+      .then((r) => r.json())
+      .then((total) => setTotal(total));
+  }, [{ usersItems }]);
 
   return (
     <div>
-      <h1>{user.username}'s Cart</h1>
-      <div className="cart-items">
-        {listUserItems}
-        <h1>Total: ${sum}</h1>
-      </div>
+      {user ? (
+        <div>
+          <h1>{user.username}'s Cart</h1>
+
+          <div>
+            {listUserItems}
+            <h1>Total: ${total}</h1>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h1>
+            Please <Link to="/login">Log in</Link> or{" "}
+            <Link to="/signup">Sign up</Link> to veiw Cart
+          </h1>
+        </div>
+      )}
     </div>
   );
 }
