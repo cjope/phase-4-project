@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [profilePic, setProfilePic] = useState("");
+  const history = useHistory();
 
   console.log(profilePic);
 
@@ -26,6 +28,7 @@ function SignUp({ setUser }) {
         r.json().then((user) => setUser(user));
       }
     });
+    history.push("/");
   }
 
   return (

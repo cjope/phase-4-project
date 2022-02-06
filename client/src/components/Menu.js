@@ -7,6 +7,7 @@ function Menu() {
     <div className="menu">
       <div className="m-left">
         <>
+          <Link to="/">Home</Link>
           <Link to="/cart">Cart</Link>
           <Link to="/bonsais">Bonsais</Link>
           <Link to="/supplies">Supplies</Link>

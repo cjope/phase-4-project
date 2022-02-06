@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Cart from "./Cart";
+import { useHistory } from "react-router-dom";
 
-function Supplies({ user }) {
+function Supplies() {
   const [supplies, setSupplies] = useState([]);
-  const [product, setProduct] = useState();
+  const history = useHistory();
 
   useEffect(() => {
     fetch("/supplies")
@@ -11,33 +11,28 @@ function Supplies({ user }) {
       .then((item) => setSupplies(item));
   }, []);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setProduct(e.target.value);
-    handleSubmit2();
-  }
-
-  console.log(product);
-
-  async function handleSubmit2() {
-    const response = await fetch("/checkout", {
+    fetch("/checkout", {
       method: "POST",
-      headers: {},
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        item_id: product,
+        item_id: e.target.value,
       }),
     });
+    history.push("/cart");
   }
 
-  const listSupplies = supplies.map((item) => (
-    <div className="product" key={item.id}>
-      <img src={item.img_url} alt="profile-pic"></img>
-      <h1>{item.id}</h1>
-      <h1>{item.name}</h1>
-      <h1>${item.price}</h1>
+  const listSupplies = supplies.map((supply) => (
+    <div className="product" key={supply.id}>
+      <img src={supply.img_url} alt="product"></img>
+      <h1>{supply.name}</h1>
+      <h1>${supply.price}</h1>
       <button
         className="add-cart"
-        value={item.id}
+        value={supply.id}
         onClick={(e) => handleSubmit(e)}
       >
         Add to Cart
@@ -45,14 +40,6 @@ function Supplies({ user }) {
     </div>
   ));
 
-  return (
-    <div className="supplies">
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Add to Cart</button>
-      </form>
-      <div className="supply-side">{listSupplies}</div>
-      <div className="cart-side">{/* <Cart user={user} /> */}</div>
-    </div>
-  );
+  return <div class="shop">{listSupplies}</div>;
 }
 export default Supplies;

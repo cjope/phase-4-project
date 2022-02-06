@@ -3,8 +3,8 @@ User.create!(username: "skroob", password: "12345", password_confirmation: "1234
 User.create!(username: "mulder", password: "Tru$tN01", password_confirmation: "Tru$tN01", img_url: "https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/08/x-files-fox-mulder.jpg")
 
 
-Item.create!(product: "Accessory", name:"Pruning Scissors", price: "9.99", age:"nil", img_url: "https://image.shutterstock.com/image-photo/old-rusted-scissors-on-white-600w-1062555587.jpg")
-Item.create!(product:"Accessory", name:"Grafting Wir",price:"14.99", age:"nil", img_url:"https://m.media-amazon.com/images/I/81wiWcvOskL._AC_SL1500_.jpg")
+Item.create!(product: "Accessory", name:"Pruning Scissors", price: "9.99", age:"nil", img_url: "https://m.media-amazon.com/images/I/61wXhvoyT9L._AC_SL1500_.jpg")
+Item.create!(product:"Accessory", name:"Grafting Wire",price:"14.99", age:"nil", img_url:"https://m.media-amazon.com/images/I/81wiWcvOskL._AC_SL1500_.jpg")
 
 
 Item.create!(product:"Plant", name:"Juniper 0001", price:"129.95", age:"2006-01-02 00:00:00.000000000 +0000", img_url:"https://cdn.pixabay.com/photo/2021/03/22/11/40/bonsai-6114252__340.jpg")

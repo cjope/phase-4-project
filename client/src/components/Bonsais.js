@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function Bonsais() {
   const [plants, setPlants] = useState([]);
-  const [product, setProduct] = useState();
+  const history = useHistory();
 
   useEffect(() => {
     fetch("/plants")
@@ -12,20 +13,16 @@ function Bonsais() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setProduct(e.target.value);
-    handleSubmit2();
-  }
-
-  function handleSubmit2() {
     fetch("/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        item_id: product,
+        item_id: e.target.value,
       }),
     });
+    history.push("/cart");
   }
 
   const listPlants = plants.map((plant) => (
@@ -33,6 +30,7 @@ function Bonsais() {
       <img src={plant.img_url} alt="profile-pic"></img>
       <h2>{plant.name}</h2>
       <h2>${plant.price}</h2>
+      {/* add inCart? maybe */}
       <button
         className="add-cart"
         value={plant.id}
@@ -43,6 +41,6 @@ function Bonsais() {
     </div>
   ));
 
-  return <div>{plants ? <div>{listPlants}</div> : <></>}</div>;
+  return <div className="shop">{listPlants} </div>;
 }
 export default Bonsais;
