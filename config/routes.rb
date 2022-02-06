@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get "/customers", to: "users#index"
 
   get "/cart", to: "users_items#show"
+  get "/cartitem", to: "users_items#cartitem"
+
+  delete "/remove/:id", to: "users_items#destroy"
 
   get "/total", to: "users_items#total"
 
