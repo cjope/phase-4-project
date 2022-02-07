@@ -20,10 +20,9 @@ class UsersController < ApplicationController
       render json: user
     end
 
-    # def total
-    #   user = User.find_by(id: session[:user_id])
-    #   render json:user.items.sum(:price)
-    # end
+    def update
+      render json: User.find_by(id: session[:user_id])
+    end
   
     private
   

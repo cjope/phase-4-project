@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   post "/checkout", to: "users_items#create"
 
+  get "/update-pic", to: "users#update"
+
   # get "/cart", to: "usersitem#show"
   # get "/carts", to: "usersitem#index"
   

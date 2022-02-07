@@ -35,10 +35,6 @@ function Cart({ user }) {
       .then((total) => setTotal(total));
   }, [usersItems.length]);
 
-  // function handleContinue() {
-  //   history.goBack();
-  // }
-
   return (
     <div>
       {user ? (

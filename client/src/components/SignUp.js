@@ -8,8 +8,6 @@ function SignUp({ setUser }) {
   const [profilePic, setProfilePic] = useState("");
   const history = useHistory();
 
-  console.log(profilePic);
-
   function handleSignUp(e) {
     e.preventDefault();
     fetch("/signup", {
@@ -37,7 +35,6 @@ function SignUp({ setUser }) {
         <h1>Sign Up</h1>
         <br />
         <label>Username</label>
-        {/* <br /> */}
         <input
           type="text"
           id="username"
@@ -46,7 +43,6 @@ function SignUp({ setUser }) {
         />
         <br />
         <label>Password</label>
-        {/* <br /> */}
         <input
           type="password"
           id="password"
@@ -55,7 +51,6 @@ function SignUp({ setUser }) {
         />
         <br />
         <label>Password Confirmation</label>
-        {/* <br /> */}
         <input
           type="password"
           id="password_confirmation"
@@ -64,8 +59,6 @@ function SignUp({ setUser }) {
         />
         <br />
         <label>Profile Pic</label>
-        {/* <br /> */}
-
         <input
           type="text"
           id="img_url"

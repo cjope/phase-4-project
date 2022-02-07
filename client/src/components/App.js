@@ -5,7 +5,6 @@ import Login from "./Login";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import Cart from "./Cart";
-// import Menu from "./Menu";
 import "../App.css";
 import Supplies from "./Supplies";
 import Bonsais from "./Bonsais";
@@ -20,17 +19,6 @@ function App() {
       }
     });
   }, []);
-
-  // useEffect(() => {
-  //   fetch("/allcarts").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((useritems) => console.log(useritems));
-  //     }
-  //   });
-  // }, []);
-
-  // if (!user) return <Login setUser={setUser} />;
-  // console.log(user);
 
   return (
     <>

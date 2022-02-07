@@ -27,7 +27,7 @@ function Bonsais() {
 
   const listPlants = plants.map((plant) => (
     <div className="product" key={plant.id}>
-      <img src={plant.img_url} alt="profile-pic"></img>
+      <img src={plant.img_url} alt="product"></img>
       <h2>{plant.name}</h2>
       <h2>${plant.price}</h2>
       {/* add inCart? maybe */}

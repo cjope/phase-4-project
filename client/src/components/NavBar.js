@@ -13,6 +13,14 @@ function NavBar({ user, setUser }) {
     });
   }
 
+  function updateProfilePic() {
+    fetch("/update-pic")
+      .then((r) => r.json())
+      .then((data) => console.log(data.img_url));
+
+    // make this into an Update fetch and route to method
+  }
+
   return (
     <>
       <header className="header">
@@ -32,6 +40,7 @@ function NavBar({ user, setUser }) {
                   className="profile-pic"
                   src={user.img_url}
                   alt="profile"
+                  onClick={updateProfilePic}
                 ></img>
                 <p>Welcome, {user.username}!</p>
                 <button onClick={handleLogout}>Logout</button>
