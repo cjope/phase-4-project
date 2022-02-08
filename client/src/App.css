@@ -145,3 +145,7 @@ button {
   text-align: center;
   padding: 5%;
 }
+
+.log-sign {
+  display: flex;
+}

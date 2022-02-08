@@ -1,24 +1,21 @@
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Login from "./Login";
+import Logout from "./Logout";
+import SignUp from "./SignUp";
+import CartFloating from "./CartFloating";
 
 function NavBar({ user, setUser }) {
-  function handleLogout() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-      <>
-        <Link to="/" />;
-      </>;
-    });
-  }
+  const notify = () => toast(`Hello ${user.username}`);
 
   function updateProfilePic() {
     fetch("/update-pic")
       .then((r) => r.json())
       .then((data) => console.log(data.img_url));
 
-    // make this into an Update fetch and route to method
+    //   // make this into an Update fetch and route to method
   }
 
   return (
@@ -40,24 +37,22 @@ function NavBar({ user, setUser }) {
                   className="profile-pic"
                   src={user.img_url}
                   alt="profile"
-                  onClick={updateProfilePic}
+                  onClick={notify}
                 ></img>
                 <p>Welcome, {user.username}!</p>
-                <button onClick={handleLogout}>Logout</button>
+                <Logout setUser={setUser} />
               </div>
             ) : (
-              <>
-                <Link to="/signup"> Signup </Link>
-
-                <Link to="/login"> Login </Link>
-              </>
+              <div className="log-sign">
+                <Login setUser={setUser}></Login>
+                <SignUp setUser={setUser}></SignUp>
+              </div>
             )}
           </div>
-          <>
-            <Link to="/cart">🛒</Link>
-          </>
         </div>
+        <CartFloating user={user} setUser={setUser} />
       </header>
+
       <Menu />
     </>
   );

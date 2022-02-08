@@ -39,26 +39,16 @@ function Cart({ user }) {
     <div>
       {user ? (
         <div>
-          <h1>{user.username}'s Cart</h1>
-          <div className="cart-buttons">
-            <button className="add-cart" onClick={(e) => history.goBack()}>
-              Continue Shopping
-            </button>
-            <button className="add-cart" onClick={(e) => history.goBack()}>
-              Checkout
-            </button>
-          </div>
-
           <div className="shop">{listUserItems}</div>
-          <h1 className="total">Total: ${total}</h1>
+          <h3 className="total">Total: ${total}</h3>
         </div>
       ) : (
-        // This needs some sort of async action. very annoying
         <div>
-          <h1>
-            Please <Link to="/login">Log in</Link> or{" "}
-            <Link to="/signup">Sign up</Link> to veiw Cart
-          </h1>
+          <h3>
+            Please <Link to="/login">Log in</Link>
+            {" or "}
+            <Link to="/signup">Sign up</Link> to view Cart
+          </h3>
         </div>
       )}
     </div>
