@@ -1,20 +1,13 @@
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
-// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
-// import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
-// import { FormLabel, Input } from "@material-ui/core";
-// import { Form } from "react-bootstrap";
-// import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Logout({ setUser }) {
   const [open, setOpen] = React.useState(false);
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
   const history = useHistory();
 
   const handleClickToOpen = () => {
@@ -23,7 +16,7 @@ function Logout({ setUser }) {
 
   const handleToClose = () => {
     setOpen(false);
-    history.push("/");
+    history.go(0);
   };
 
   function handleLogout() {

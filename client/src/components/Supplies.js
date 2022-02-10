@@ -40,6 +40,6 @@ function Supplies() {
     </div>
   ));
 
-  return <div class="shop">{listSupplies}</div>;
+  return <div className="shop">{listSupplies}</div>;
 }
 export default Supplies;

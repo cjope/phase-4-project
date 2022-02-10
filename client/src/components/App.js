@@ -42,6 +42,9 @@ function App() {
         <Route path="/cart">
           <Cart user={user} />
         </Route>
+        <Route path="/cart-floating">
+          <Cart user={user} />
+        </Route>
         <Route path="/">
           <Home />
         </Route>

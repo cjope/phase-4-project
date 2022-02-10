@@ -30,7 +30,6 @@ function Bonsais() {
       <img src={plant.img_url} alt="product"></img>
       <h2>{plant.name}</h2>
       <h2>${plant.price}</h2>
-      {/* add inCart? maybe */}
       <button
         className="add-cart"
         value={plant.id}

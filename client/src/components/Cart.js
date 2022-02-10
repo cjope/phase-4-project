@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Login from "./Login";
+import SignUp from "./SignUp";
 
 function Cart({ user }) {
   const [usersItems, setUsersItems] = useState([]);
@@ -43,12 +45,12 @@ function Cart({ user }) {
           <h3 className="total">Total: ${total}</h3>
         </div>
       ) : (
-        <div>
-          <h3>
-            Please <Link to="/login">Log in</Link>
-            {" or "}
-            <Link to="/signup">Sign up</Link> to view Cart
-          </h3>
+        <div className="log-sign">
+          <h3>Please</h3>
+          <Login></Login>
+          <h3>or</h3>
+          <SignUp></SignUp>
+          <h3>to view cart</h3>
         </div>
       )}
     </div>

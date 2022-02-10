@@ -28,11 +28,6 @@ Rails.application.routes.draw do
 
   get "/update-pic", to: "users#update"
 
-  # get "/cart", to: "usersitem#show"
-  # get "/carts", to: "usersitem#index"
-  
-
-  # Routing logic: fallback requests for React Router.
-  # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
+

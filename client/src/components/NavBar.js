@@ -5,18 +5,16 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./Login";
 import Logout from "./Logout";
 import SignUp from "./SignUp";
-import CartFloating from "./CartFloating";
+// import CartFloating from "./CartFloating";
 
 function NavBar({ user, setUser }) {
   const notify = () => toast(`Hello ${user.username}`);
 
-  function updateProfilePic() {
-    fetch("/update-pic")
-      .then((r) => r.json())
-      .then((data) => console.log(data.img_url));
-
-    //   // make this into an Update fetch and route to method
-  }
+  // function updateProfilePic() {
+  //   fetch("/update-pic")
+  //     .then((r) => r.json())
+  //     .then((data) => console.log(data.img_url));
+  // }
 
   return (
     <>
@@ -50,7 +48,7 @@ function NavBar({ user, setUser }) {
             )}
           </div>
         </div>
-        <CartFloating user={user} setUser={setUser} />
+        {/* <CartFloating user={user} setUser={setUser} /> */}
       </header>
 
       <Menu />

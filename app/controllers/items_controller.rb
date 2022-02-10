@@ -5,8 +5,6 @@ class ItemsController < ApplicationController
         render json: @user.items
       end
 
-      # ^ this should probably be in the useritems?
-
       def supplies
         items = Item.where(product: "Accessory")
         render json: items

@@ -5,7 +5,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
-import { FormLabel, Input } from "@material-ui/core";
+import { FormLabel, Input, Link } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 
 function SignUp({ setUser }) {
@@ -15,15 +15,12 @@ function SignUp({ setUser }) {
   const [profilePic, setProfilePic] = useState("");
   const [open, setOpen] = React.useState(false);
 
-  const history = useHistory();
-
   const handleClickToOpen = () => {
     setOpen(true);
   };
 
   const handleToClose = () => {
     setOpen(false);
-    history.push("/");
   };
 
   function handleSignUp(e) {
@@ -44,7 +41,7 @@ function SignUp({ setUser }) {
         r.json().then((user) => setUser(user));
       }
     });
-    history.push("/");
+    <Link to="/login" />;
   }
 
   return (
