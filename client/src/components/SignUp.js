@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -78,6 +77,15 @@ function SignUp({ setUser }) {
               id="password"
               value={passwordConfirmation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
+            ></Input>
+          </Form>
+          <Form>
+            <FormLabel>Profile Pic URL</FormLabel>
+            <Input
+              type="text"
+              id="profile-pic"
+              value={profilePic}
+              onChange={(e) => setProfilePic(e.target.value)}
             ></Input>
           </Form>
         </DialogContent>
