@@ -47,7 +47,7 @@ function App() {
           <Cart user={user} />
         </Route>
         <Route path="/update-User">
-          <UpdateUser user={user} />
+          <UpdateUser user={user} setUser={setUser} />
         </Route>
         <Route path="/">
           <Home />

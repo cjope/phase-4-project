@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   put "/update", to: "users#update"
-  # get "/customers", to: "users#index"
+  delete "/delete", to: "users#destroy"
+
+
+  get "/customers", to: "users#index"
   get "/current", to: "sessions#current"
 
 

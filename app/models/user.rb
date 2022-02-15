@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true
 
-    has_many :users_items, dependent: :destroy
+    has_many :users_items, dependent: :destroy, dependent: :delete_all
     has_many :items, through: :users_items
 
     def total

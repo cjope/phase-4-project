@@ -1,7 +1,7 @@
 import { Select } from "@material-ui/core";
 import { useState } from "react";
 
-function UpdateUser() {
+function UpdateUser({ setUser }) {
   const [updateName, setUpdateName] = useState("");
   const [updatePass, setUpdatePass] = useState("");
   const [updatePassConf, setUpdatePassConf] = useState("");
@@ -45,11 +45,16 @@ function UpdateUser() {
     });
   }
 
+  function deleteUser() {
+    fetch("/delete", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
+
   return (
     <div className="update-user">
-      {/* <button onClick={(e) => setUpdateParam("username")}>
-        Update Username
-      </button> */}
       <div>
         <label>Update UserName</label>
         <form name="username" onSubmit={updateUsername}>
@@ -62,22 +67,17 @@ function UpdateUser() {
       <div>
         <label>Update Password</label>
         <form name="username" onSubmit={updatePassword}>
-          {/* <div> */}
-
           <input
             placeholder="New Password"
             onChange={(e) => setUpdatePass(e.target.value)}
           ></input>
           <br />
-
           <input
             placeholder="Confirm New Password"
             onChange={(e) => setUpdatePassConf(e.target.value)}
           ></input>
           <br />
-
           <button type="submit">Submit</button>
-          {/* </div> */}
         </form>
       </div>
       <div>
@@ -87,6 +87,7 @@ function UpdateUser() {
           <button>Submit</button>
         </form>
       </div>
+      <button onClick={deleteUser}>Delete User</button>
     </div>
   );
 }
