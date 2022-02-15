@@ -1,9 +1,26 @@
-import { useEffect, useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+} from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 function Supplies() {
+  const [open, setOpen] = React.useState(false);
+  const [itemName, setItemName] = useState("");
   const [supplies, setSupplies] = useState([]);
   const history = useHistory();
+
+  const handleClickToOpen = (e) => {
+    setOpen(true);
+    setItemName(e.target.name);
+  };
+
+  const handleToClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     fetch("/supplies")
@@ -22,8 +39,18 @@ function Supplies() {
         item_id: e.target.value,
       }),
     });
-    history.push("/cart");
+    handleClickToOpen(e);
   }
+
+  const handleNavigateCart = (
+    <Dialog open={open}>
+      <DialogContent>{itemName} added to your cart</DialogContent>
+      <DialogActions>
+        <Button onClick={(e) => history.push("/cart")}>Go to Cart</Button>
+        <Button onClick={handleToClose}>Continue Shopping</Button>
+      </DialogActions>
+    </Dialog>
+  );
 
   const listSupplies = supplies.map((supply) => (
     <div className="product" key={supply.id}>
@@ -33,6 +60,7 @@ function Supplies() {
       <button
         className="add-cart"
         value={supply.id}
+        name={supply.name}
         onClick={(e) => handleSubmit(e)}
       >
         Add to Cart
@@ -40,6 +68,10 @@ function Supplies() {
     </div>
   ));
 
-  return <div className="shop">{listSupplies}</div>;
+  return (
+    <div className="shop">
+      {listSupplies} {handleNavigateCart}
+    </div>
+  );
 }
 export default Supplies;

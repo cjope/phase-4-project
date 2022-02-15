@@ -18,7 +18,7 @@ function App() {
         r.json().then((user) => setUser(user));
       }
     });
-  }, [user]);
+  }, []);
 
   return (
     <>
@@ -31,7 +31,7 @@ function App() {
           <Login setUser={setUser} />
         </Route>
         <Route path="/cart">
-          <Cart user={user} />
+          <Cart user={user} setUser={setUser} />
         </Route>
         <Route path="/supplies">
           <Supplies user={user} />

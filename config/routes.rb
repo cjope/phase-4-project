@@ -1,32 +1,32 @@
 Rails.application.routes.draw do
   
-  resources :users_items
-  resources :items
-  resources :users
+  # resources :users_items
+  # resources :items
+  # resources :users
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
-  post "/signup", to: "users#create"
+  
+  
   get "/me", to: "users#show"
-  get "/customers", to: "users#index"
+  post "/signup", to: "users#create"
+  # patch "/update-pic", to: "users#update"
+  # get "/customers", to: "users#index"
+  get "/current", to: "sessions#current"
 
-  get "/cart", to: "users_items#show"
-  get "/cartitem", to: "users_items#cartitem"
-  get "/allcarts", to: "users_items#index"
 
-
-  delete "/remove/:id", to: "users_items#destroy"
-
-  get "/total", to: "users_items#total"
-
+  
   get "/supplies", to: "items#supplies"
   get "/plants", to: "items#plants"
 
 
+  get "/cart", to: "users_items#show"
+  get "/total", to: "users_items#total"
+  delete "/remove/:id", to: "users_items#destroy"
   post "/checkout", to: "users_items#create"
+  # get "/allcarts", to: "users_items#index"
+  # patch "/update", to: "users_items#update"
 
-  get "/update-pic", to: "users#update"
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

@@ -1,9 +1,26 @@
-import { useEffect, useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+} from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 function Bonsais() {
+  const [open, setOpen] = React.useState(false);
+  const [itemName, setItemName] = useState("");
   const [plants, setPlants] = useState([]);
   const history = useHistory();
+
+  const handleClickToOpen = (e) => {
+    setOpen(true);
+    setItemName(e.target.name);
+  };
+
+  const handleToClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     fetch("/plants")
@@ -22,8 +39,18 @@ function Bonsais() {
         item_id: e.target.value,
       }),
     });
-    history.push("/cart");
+    handleClickToOpen(e);
   }
+
+  const handleNavigateCart = (
+    <Dialog open={open}>
+      <DialogContent>{itemName} added to your cart</DialogContent>
+      <DialogActions>
+        <Button onClick={(e) => history.push("/cart")}>Go to Cart</Button>
+        <Button onClick={handleToClose}>Continue Shopping</Button>
+      </DialogActions>
+    </Dialog>
+  );
 
   const listPlants = plants.map((plant) => (
     <div className="product" key={plant.id}>
@@ -33,6 +60,7 @@ function Bonsais() {
       <button
         className="add-cart"
         value={plant.id}
+        name={plant.name}
         onClick={(e) => handleSubmit(e)}
       >
         Add to Cart
@@ -40,6 +68,10 @@ function Bonsais() {
     </div>
   ));
 
-  return <div className="shop">{listPlants} </div>;
+  return (
+    <div className="shop">
+      {listPlants} {handleNavigateCart}
+    </div>
+  );
 }
 export default Bonsais;

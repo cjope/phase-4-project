@@ -34,10 +34,14 @@ ActiveRecord::Schema.define(version: 2022_02_02_015259) do
   end
 
   create_table "users_items", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_users_items_on_item_id"
+    t.index ["user_id"], name: "index_users_items_on_user_id"
   end
 
+  add_foreign_key "users_items", "items"
+  add_foreign_key "users_items", "users"
 end
