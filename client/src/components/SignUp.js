@@ -6,6 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { FormLabel, Input, Link } from "@material-ui/core";
 import { Form } from "react-bootstrap";
+import { toast, ToastContainer } from "react-toastify";
 
 function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
@@ -38,6 +39,11 @@ function SignUp({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      } else {
+        return toast.error("Please check your entries", {
+          autoClose: 1000,
+          hideProgressBar: true,
+        });
       }
     });
     <Link to="/login" />;
@@ -45,6 +51,7 @@ function SignUp({ setUser }) {
 
   return (
     <div stlye={{}}>
+      <ToastContainer />
       <Button variant="outlined" color="primary" onClick={handleClickToOpen}>
         Signup
       </Button>

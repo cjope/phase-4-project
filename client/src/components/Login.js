@@ -8,6 +8,7 @@ import { FormLabel, Input } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { collapseToast, toast, ToastContainer } from "react-toastify";
 
 function Login({ setUser }) {
   const [open, setOpen] = React.useState(false);
@@ -15,13 +16,17 @@ function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
+  function notify() {
+    toast.error("uh oh");
+  }
+
   const handleClickToOpen = () => {
     setOpen(true);
   };
 
   const handleToClose = () => {
     setOpen(false);
-    history.push("/");
+    // history.go();
   };
 
   function handleLogin(e) {
@@ -35,6 +40,13 @@ function Login({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      } else {
+        return r.json().then((json) =>
+          toast.error(json.errors.toString(), {
+            autoClose: 1000,
+            hideProgressBar: true,
+          })
+        );
       }
     });
     handleToClose();
@@ -42,6 +54,8 @@ function Login({ setUser }) {
 
   return (
     <div stlye={{}}>
+      {/* <button onClick={notify}>Notify</button> */}
+      <ToastContainer />
       <Button variant="outlined" color="primary" onClick={handleClickToOpen}>
         Login
       </Button>

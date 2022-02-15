@@ -67,11 +67,9 @@ function Cart({ user, setUser }) {
   ));
 
   function getTotal() {
-    // useState(() => {
     fetch("/total")
       .then((r) => r.json())
       .then((total) => setTotal(total));
-    // }, []);
   }
 
   return (
