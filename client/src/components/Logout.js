@@ -4,7 +4,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function Logout({ setUser }) {
   const [open, setOpen] = React.useState(false);
@@ -24,9 +24,9 @@ function Logout({ setUser }) {
       if (r.ok) {
         setUser(null);
       }
-      <>
-        <Link to="/" />;
-      </>;
+      // <>
+      //   <Link to="/" />;
+      // </>;
     });
     handleToClose();
   }

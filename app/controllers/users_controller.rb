@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authorize, only: :show
+  skip_before_action :authorize
 
   
   def create
@@ -12,6 +12,12 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(id: session[:user_id])
     render json: user
+  end
+
+  def update
+    user = User.find_by(id: session[:user_id])
+    user.update!(user_params)
+    render json: user, status: :ok
   end
 
   private

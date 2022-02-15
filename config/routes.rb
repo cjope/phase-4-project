@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
-  # patch "/update-pic", to: "users#update"
+  put "/update", to: "users#update"
   # get "/customers", to: "users#index"
   get "/current", to: "sessions#current"
 

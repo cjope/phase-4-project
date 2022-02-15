@@ -21,8 +21,6 @@ function Login({ setUser }) {
 
   const handleToClose = () => {
     setOpen(false);
-    setUsername("");
-    setPassword("");
     history.push("/");
   };
 

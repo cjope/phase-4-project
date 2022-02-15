@@ -156,3 +156,21 @@ button {
 .log-sign h3 {
   padding: 2%;
 }
+
+.update-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.update-user div {
+  border: solid black;
+  margin: 2%;
+}
+
+.update-user * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}

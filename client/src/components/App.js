@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import "../App.css";
 import Supplies from "./Supplies";
 import Bonsais from "./Bonsais";
+import UpdateUser from "./UpdateUser";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path="/cart-floating">
           <Cart user={user} />
+        </Route>
+        <Route path="/update-User">
+          <UpdateUser user={user} />
         </Route>
         <Route path="/">
           <Home />
