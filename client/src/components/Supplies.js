@@ -30,7 +30,7 @@ function Supplies() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    fetch("/checkout", {
+    fetch("/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

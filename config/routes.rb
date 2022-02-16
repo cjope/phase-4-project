@@ -24,9 +24,10 @@ Rails.application.routes.draw do
 
 
   get "/cart", to: "users_items#show"
-  get "/total", to: "users_items#total"
+  get "/total", to: "sessions#total"
   delete "/remove/:id", to: "users_items#destroy"
-  post "/checkout", to: "users_items#create"
+  delete "/checkout", to: "users_items#checkout"
+  post "/add", to: "users_items#create"
   # get "/allcarts", to: "users_items#index"
   # patch "/update", to: "users_items#update"
 

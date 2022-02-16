@@ -17,4 +17,9 @@ class SessionsController < ApplicationController
     head :no_content
   end
 
+  def total
+    total = User.find_by(id: session[:user_id])
+    render json:total.items.sum(:price).round(2)
+  end
+
 end

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import "react-toastify/dist/ReactToastify.css";
 import { Button, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
+import { toast, ToastContainer } from "react-toastify";
 
 function Cart({ user, setUser }) {
   const [usersItems, setUsersItems] = useState([]);
@@ -24,11 +25,11 @@ function Cart({ user, setUser }) {
     setOpen(false);
   };
 
-  useState(() => {
+  useEffect(() => {
     fetch("/cart")
       .then((r) => r.json())
       .then((cart) => setUsersItems(cart));
-    getTotal();
+    // getTotal();
   }, []);
 
   function handleDelete() {
@@ -36,8 +37,30 @@ function Cart({ user, setUser }) {
     handleToClose();
     setItemID(0);
     setItemName("");
-    history.go(0);
+    history.go();
   }
+
+  function handleCheckout() {
+    fetch(`/checkout`, { method: "DELETE" });
+    handleThankYou();
+  }
+
+  function handleThankYou() {
+    toast.success("Thanks for shopping!", {
+      autoClose: 1000,
+      hideProgressBar: true,
+    });
+    setTimeout(() => {
+      history.go();
+    }, 1000);
+    // history.go();
+  }
+
+  useEffect(() => {
+    fetch("/total")
+      .then((r) => r.json())
+      .then((total) => setTotal(total));
+  }, []);
 
   const listUserItems = usersItems?.map((usersItem) => (
     <div className="product" key={usersItem.id}>
@@ -66,18 +89,30 @@ function Cart({ user, setUser }) {
     </div>
   ));
 
-  function getTotal() {
-    fetch("/total")
-      .then((r) => r.json())
-      .then((total) => setTotal(total));
-  }
-
   return (
     <div>
       {user ? (
         <div>
           <div className="shop">{listUserItems}</div>
-          <h3 className="total">Total: ${total}</h3>
+          {total == 0 ? (
+            <h3 className="total">Cart is Empty</h3>
+          ) : (
+            <h3 className="total">Total: ${total}</h3>
+          )}
+          <Button
+            variant="outlined"
+            color="primary"
+            style={{
+              borderStyle: "solid",
+              borderColor: "green",
+              color: "green",
+              float: "right",
+            }}
+            onClick={handleCheckout}
+          >
+            Checkout
+          </Button>
+          <ToastContainer />
         </div>
       ) : (
         <div className="log-sign">

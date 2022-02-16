@@ -49,6 +49,7 @@ function Login({ setUser }) {
         );
       }
     });
+    history.push("/");
     handleToClose();
   }
 

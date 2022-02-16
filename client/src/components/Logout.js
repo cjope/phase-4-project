@@ -15,7 +15,7 @@ function Logout({ setUser }) {
 
   const handleToClose = () => {
     setOpen(false);
-    history.go();
+    // history.go();
   };
 
   function handleLogout() {
