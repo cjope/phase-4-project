@@ -1,11 +1,13 @@
 import { Button } from "@material-ui/core";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function UpdateUser({ setUser }) {
   const [updateName, setUpdateName] = useState("");
   // const [updatePass, setUpdatePass] = useState("");
   // const [updatePassConf, setUpdatePassConf] = useState("");
   const [updateImg, setUpdateImg] = useState("");
+  const history = useHistory();
 
   function updateUsername() {
     fetch("/update", {
@@ -50,6 +52,7 @@ function UpdateUser({ setUser }) {
         setUser(null);
       }
     });
+    history.push("/");
   }
 
   return (

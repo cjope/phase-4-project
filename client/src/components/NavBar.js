@@ -1,12 +1,9 @@
-import { Link, useHistory } from "react-router-dom";
-import Menu from "./Menu";
+import { Link } from "react-router-dom";
 import Login from "./Login";
 import Logout from "./Logout";
 import SignUp from "./SignUp";
 
 function NavBar({ user, setUser }) {
-  const history = useHistory();
-
   return (
     <>
       <header className="header">
@@ -42,8 +39,6 @@ function NavBar({ user, setUser }) {
           </div>
         </div>
       </header>
-
-      <Menu />
     </>
   );
 }

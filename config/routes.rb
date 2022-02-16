@@ -1,33 +1,32 @@
 Rails.application.routes.draw do
   
-  # resources :users_items
-  # resources :items
-  # resources :users
+  resources :items
 
+  #session
+  get "/current", to: "sessions#current"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  get "/total", to: "sessions#total"
   
-  
+  # user
+  get "/customers", to: "users#index"
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   put "/update", to: "users#update"
   delete "/delete", to: "users#destroy"
 
-
-  get "/customers", to: "users#index"
-  get "/current", to: "sessions#current"
-
-
-  
-  get "/supplies", to: "items#supplies"
-  get "/plants", to: "items#plants"
+  #item
+  get "/items/:product", to: "items#type"
+  get "/supplies", to: "items#supplies" #change all "accessories"
+  get "/plants", to: "items#plants" #change all "Bonsais"
 
 
+  #users_item
   get "/cart", to: "users_items#show"
-  get "/total", to: "sessions#total"
+  post "/add", to: "users_items#create"
   delete "/remove/:id", to: "users_items#destroy"
   delete "/checkout", to: "users_items#checkout"
-  post "/add", to: "users_items#create"
+
   # get "/allcarts", to: "users_items#index"
   # patch "/update", to: "users_items#update"
 

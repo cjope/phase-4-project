@@ -8,11 +8,11 @@ import { toast, ToastContainer } from "react-toastify";
 
 function Cart({ user, setUser }) {
   const [usersItems, setUsersItems] = useState([]);
-  const [total, setTotal] = useState(0);
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
   const [itemID, setItemID] = useState(0);
   const [itemName, setItemName] = useState("");
+  const [total, setTotal] = useState(0);
 
   const handleClickToOpen = (e) => {
     e.preventDefault();
@@ -29,7 +29,12 @@ function Cart({ user, setUser }) {
     fetch("/cart")
       .then((r) => r.json())
       .then((cart) => setUsersItems(cart));
-    // getTotal();
+  }, []);
+
+  useEffect(() => {
+    fetch("/total")
+      .then((r) => r.json())
+      .then((total) => setTotal(total));
   }, []);
 
   function handleDelete() {
@@ -53,14 +58,7 @@ function Cart({ user, setUser }) {
     setTimeout(() => {
       history.go();
     }, 1000);
-    // history.go();
   }
-
-  useEffect(() => {
-    fetch("/total")
-      .then((r) => r.json())
-      .then((total) => setTotal(total));
-  }, []);
 
   const listUserItems = usersItems?.map((usersItem) => (
     <div className="product" key={usersItem.id}>
@@ -89,14 +87,42 @@ function Cart({ user, setUser }) {
     </div>
   ));
 
+  // const listUserItems = user?.cart.map((item) => (
+  //   <div className="product" key={item.id}>
+  //     <img src={item.img_url} alt="product"></img>
+  //     <h1>{item.name}</h1>
+  //     <h1>${item.price}</h1>
+  //     <button
+  //       className="add-cart"
+  //       value={item.id}
+  //       name={item.name}
+  //       onClick={handleClickToOpen}
+  //     >
+  //       Remove
+  //     </button>
+  //     <Dialog open={open}>
+  //       <DialogTitle>Delete Item</DialogTitle>
+  //       <DialogContent>
+  //         Are you sure you want to remove {item.name} from your cart?
+  //       </DialogContent>
+
+  //       <Button value={item.id} onClick={handleDelete}>
+  //         Yes
+  //       </Button>
+  //       <Button onClick={handleToClose}>No</Button>
+  //     </Dialog>
+  //   </div>
+  // ));
+
   return (
     <div>
       {user ? (
         <div>
           <div className="shop">{listUserItems}</div>
-          {total == 0 ? (
+          {user.total === 0 ? (
             <h3 className="total">Cart is Empty</h3>
           ) : (
+            // <h3 className="total">Total: ${user.total}</h3>
             <h3 className="total">Total: ${total}</h3>
           )}
           <Button

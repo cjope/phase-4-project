@@ -9,6 +9,8 @@ import "../App.css";
 import Supplies from "./Supplies";
 import Bonsais from "./Bonsais";
 import UpdateUser from "./UpdateUser";
+import Items from "./Items";
+import Menu from "./Menu";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -24,6 +26,7 @@ function App() {
   return (
     <>
       <NavBar user={user} setUser={setUser} />
+      <Menu />
       <Switch>
         <Route path="/signup">
           <SignUp setUser={setUser} />
@@ -48,6 +51,12 @@ function App() {
         </Route>
         <Route path="/update-User">
           <UpdateUser user={user} setUser={setUser} />
+        </Route>
+        <Route path="/items">
+          <Items user={user} />
+        </Route>
+        <Route path="/menu">
+          <Menu />
         </Route>
         <Route path="/">
           <Home />

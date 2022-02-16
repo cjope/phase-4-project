@@ -2,12 +2,6 @@ class UsersController < ApplicationController
 
   skip_before_action :authorize
   
-  def create
-    user = User.create!(user_params)
-      session[:user_id] = user.id
-      render json: user, status: :created
-  end
-
   def index
     render json: User.all
   end
@@ -15,6 +9,12 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(id: session[:user_id])
     render json: user
+  end
+
+  def create
+    user = User.create!(user_params)
+      session[:user_id] = user.id
+      render json: user, status: :created
   end
 
   def update
@@ -27,11 +27,6 @@ class UsersController < ApplicationController
     user = User.find_by(id: session[:user_id])
     user.destroy
     head :no_content
-  end
-
-  def total
-    total = User.find_by(id: session[:user_id])
-    render json:total.items.sum(:price).round(2)
   end
 
   private
