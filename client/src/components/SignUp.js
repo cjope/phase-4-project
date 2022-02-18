@@ -42,10 +42,12 @@ function SignUp({ setUser }) {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {
-        return toast.error("Please check your entries", {
-          autoClose: 1000,
-          hideProgressBar: true,
-        });
+        r.json().then((data) =>
+          toast.error(data.errors, {
+            autoClose: 1000,
+            hideProgressBar: true,
+          })
+        );
       }
     });
     history.push("/");

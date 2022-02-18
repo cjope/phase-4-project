@@ -39,7 +39,7 @@ function Login({ setUser }) {
         r.json().then((user) => setUser(user));
       } else {
         return r.json().then((json) =>
-          toast.error(json.errors.toString(), {
+          toast.error(json.errors, {
             autoClose: 1000,
             hideProgressBar: true,
           })

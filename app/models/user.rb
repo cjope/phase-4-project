@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
     after_initialize :init
     before_create :downcase_name
+    before_update :downcase_name
     
     validates :username, presence: true, uniqueness: {case_sensitive: false}
 
