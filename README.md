@@ -53,8 +53,9 @@ A form with options to update the user's information. "Update Username" will all
 <!-- * There are no safegaurds around this button as of yet. An Dialogue Option will be set along with validation -->
 <!-- * Update Password currently disabled due to backend setup for validation -->
 
-Updates/Bug Fixes:
+Updates/Fixes:
 
-021622:
+021722:
 
--
+- username case sensitivity (quick fix)
+- profile pic default when one is not provided

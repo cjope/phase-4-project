@@ -8,7 +8,7 @@ import { FormLabel, Input } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-// import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 function Login({ setUser }) {
   const [open, setOpen] = React.useState(false);
@@ -37,13 +37,13 @@ function Login({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
-        // } else {
-        //   return r.json().then((json) =>
-        //     toast.error(json.errors.toString(), {
-        //       autoClose: 1000,
-        //       hideProgressBar: true,
-        //     })
-        //   );
+      } else {
+        return r.json().then((json) =>
+          toast.error(json.errors.toString(), {
+            autoClose: 1000,
+            hideProgressBar: true,
+          })
+        );
       }
     });
     history.push("/");
@@ -52,7 +52,7 @@ function Login({ setUser }) {
 
   return (
     <div stlye={{}}>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Button variant="outlined" color="primary" onClick={handleClickToOpen}>
         Login
       </Button>

@@ -31,7 +31,7 @@ function SignUp({ setUser }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
+        username: username.toLowerCase(),
         password,
         password_confirmation: passwordConfirmation,
         img_url: profilePic,
