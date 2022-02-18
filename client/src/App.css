@@ -20,7 +20,6 @@ body {
 
 .h-mid {
   display: flex;
-  /* justify-content: right; */
 }
 
 .user {
@@ -115,13 +114,18 @@ button {
   flex-direction: column;
   align-items: center;
   width: 30ch;
-  /* height: 200px; */
-  /* margin-inline: 30%; */
 }
 
 .product img {
-  /* width: 300px; */
   height: 20vh;
+}
+
+.product div {
+  text-align: center;
+}
+
+.product button {
+  align-self: stretch;
 }
 
 .add-cart {

@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 
 function UpdateUser({ setUser }) {
   const [updateName, setUpdateName] = useState("");
-  // const [updatePass, setUpdatePass] = useState("");
-  // const [updatePassConf, setUpdatePassConf] = useState("");
   const [updateImg, setUpdateImg] = useState("");
   const history = useHistory();
 
@@ -20,19 +18,6 @@ function UpdateUser({ setUser }) {
       }),
     });
   }
-
-  // function updatePassword() {
-  //   fetch("/update", {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       password: `${updatePass}`,
-  //       password_confirmation: `${updatePassConf}`,
-  //     }),
-  //   });
-  // }
 
   function updateImgURL() {
     fetch("/update", {
@@ -71,23 +56,6 @@ function UpdateUser({ setUser }) {
           </Button>
         </form>
       </div>
-
-      {/* <div>
-        <label>Update Password</label>
-        <form name="username" onSubmit={updatePassword}>
-          <input
-            placeholder="New Password"
-            onChange={(e) => setUpdatePass(e.target.value)}
-          ></input>
-          <br />
-          <input
-            placeholder="Confirm New Password"
-            onChange={(e) => setUpdatePassConf(e.target.value)}
-          ></input>
-          <br />
-          <button type="submit">Submit</button>
-        </form>
-      </div> */}
       <div>
         <label>Update Profile Picture</label>
         <form name="username" onSubmit={updateImgURL}>

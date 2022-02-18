@@ -55,8 +55,11 @@ function Bonsais() {
   const listPlants = plants.map((plant) => (
     <div className="product" key={plant.id}>
       <img src={plant.img_url} alt="product"></img>
-      <h2>{plant.name}</h2>
-      <h2>${plant.price}</h2>
+      <div>
+        <h2>{plant.name}</h2>
+        <h2>{plant.show_age}</h2>
+        <h2>${plant.price}</h2>
+      </div>
       <button
         className="add-cart"
         value={plant.id}

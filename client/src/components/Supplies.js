@@ -55,8 +55,12 @@ function Supplies() {
   const listSupplies = supplies.map((supply) => (
     <div className="product" key={supply.id}>
       <img src={supply.img_url} alt="product"></img>
-      <h1>{supply.name}</h1>
-      <h1>${supply.price}</h1>
+      <div>
+        <h2>{supply.name}</h2>
+        <h2>New</h2>
+        <h2>${supply.price}</h2>
+      </div>
+
       <button
         className="add-cart"
         value={supply.id}

@@ -4,9 +4,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
-import { FormLabel, Input, Link } from "@material-ui/core";
+import { FormLabel, Input } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
@@ -14,6 +15,7 @@ function SignUp({ setUser }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleClickToOpen = () => {
     setOpen(true);
@@ -31,7 +33,7 @@ function SignUp({ setUser }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username.toLowerCase(),
+        username: username,
         password,
         password_confirmation: passwordConfirmation,
         img_url: profilePic,
@@ -46,7 +48,7 @@ function SignUp({ setUser }) {
         });
       }
     });
-    <Link to="/login" />;
+    history.push("/");
   }
 
   return (

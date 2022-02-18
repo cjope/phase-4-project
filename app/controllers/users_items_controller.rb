@@ -10,8 +10,6 @@ class UsersItemsController < ApplicationController
       cart = UsersItem.where(user_id: session[:user_id])
       render json: cart
     end
-    #use User.items instead?
-
     
     def create
       render json: UsersItem.create!(user_id: session[:user_id], item_id: params[:item_id])
